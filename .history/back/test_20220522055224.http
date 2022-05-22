@@ -1,9 +1,0 @@
-http://localhost:3000/api/techniques
-###
-POST http://localhost:3000/api/techniques
-Content-Type: application/json
-
-{ "title": "Suplex", "difficulty": "hard" }
-
-###
-DELETE http://localhost:3000/api/techniques/6289b2c2432c7a11087d2
