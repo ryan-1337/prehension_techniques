@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 let db = connectToDb();
-console.log(connectToDb())
 app.use(bodyParser.json());
 
 app.get("/", (req, res) => {
@@ -18,7 +17,11 @@ const items = [
 ];
 
 app.get("/api/techniques", (req, res) => {
-  res.json(items);
+  Techniques.find((err, techniques) => {
+    if(err) return res.status(500).send(err)
+
+    return res.status(200).send(techniques);
+  })
 });
 
 app.post("/api/techniques", (req, res) => {
@@ -33,7 +36,6 @@ app.delete("/api/techniques/:id", (req, res) => {
     if (err) return res.status(500).send(err);
     const response = {
         message: "Techniques successfully deleted",
-        id: techniques._id
     };
     return res.status(200).send(response);
     });
