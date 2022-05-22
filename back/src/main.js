@@ -4,18 +4,23 @@ import { connectToDb, Techniques } from "../database.mjs";
 const app = express();
 const port = 3000;
 
+/**
+ * Connection to database
+ */
 let db = connectToDb();
+
 app.use(bodyParser.json());
 
+/**
+ * Home page
+ */
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-const items = [
-  { name: "bras a la volee", difficulte: "simple" },
-  { name: "enfourchement", difficulte: "moyen" },
-];
-
+/**
+ * READ
+ */
 app.get("/api/techniques", (req, res) => {
   Techniques.find((err, techniques) => {
     if(err) return res.status(500).send(err)
@@ -24,6 +29,9 @@ app.get("/api/techniques", (req, res) => {
   })
 });
 
+/**
+ * CREATE
+ */
 app.post("/api/techniques", (req, res) => {
   console.log(req.body);
   const technique = new Techniques(req.body);
@@ -31,6 +39,23 @@ app.post("/api/techniques", (req, res) => {
   res.sendStatus(201);
 });
 
+/**
+ * UPDATE
+ */
+app.put("/api/techniques/:id", (req,res) => {
+  Techniques.findByIdAndUpdate(req.params.id, req.body, {new: true},
+
+    // the callback function
+    (err, todo) => {
+    // Handle any possible database errors
+        if (err) return res.status(500).send(err);
+        return res.send(todo);
+    })
+})
+
+/**
+ * DELETE
+ */
 app.delete("/api/techniques/:id", (req, res) => {
     Techniques.findByIdAndRemove(req.params.id, (err, techniques) => {
     if (err) return res.status(500).send(err);

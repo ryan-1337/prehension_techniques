@@ -15,6 +15,7 @@ export async function connectToDb() {
   const schema = new mongoose.Schema({
   title:  String, // String is shorthand for {type: String}
   difficulty: String,
+  url: String,
   body:   String,
   date: { type: Date, default: Date.now },
 });
