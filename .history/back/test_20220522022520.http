@@ -1,0 +1,6 @@
+http://localhost:3000/api/fighters
+###
+POST http://localhost:3000/api/fighters
+Content-Type: application/json
+
+{ "name": "chun-li", "hp": 975 }
