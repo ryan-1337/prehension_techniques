@@ -25,6 +25,13 @@ export const register = async (req, res, next) => {
 }
 
 export const login = async (req, res, next) => {
+  const { username, password } = req.body;
+  // Check if username and password is provided
+  if (!username || !password) {
+    return res.status(400).json({
+      message: "Username or Password not present",
+    })
+  }
   try {
     const user = await User.findOne({ username, password })
     if (!user) {

@@ -1,7 +1,8 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { connectToDb, Techniques } from "../database.mjs";
-import { userRegister, userLogin } from "./Auth/Route.mjs"
+import loginRouter from "./Auth/RegisterMiddleware.mjs"
+import registerRouter from "./Auth/LoginMiddleware.mjs"
 const app = express();
 const port = 3000;
 
@@ -72,12 +73,12 @@ app.delete("/api/techniques/:id", (req, res) => {
 /**
  * USER REGISTER
  */
- app.use("/api/auth", userRegister);
+ app.use("/api/auth", registerRouter);
 
 /**
  * USER Login
  */
- app.use("/api/auth", userLogin);
+ app.use("/api/auth", loginRouter);
 
 
 
