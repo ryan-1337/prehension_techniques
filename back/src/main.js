@@ -1,6 +1,7 @@
 import express from "express";
 import bodyParser from "body-parser";
 import { connectToDb, Techniques } from "../database.mjs";
+import { userRegister, userLogin } from "./Auth/Route.mjs"
 const app = express();
 const port = 3000;
 
@@ -65,6 +66,20 @@ app.delete("/api/techniques/:id", (req, res) => {
     return res.status(200).send(response);
     });
 })
+
+/*********************************************** AUTH ************************************************/
+
+/**
+ * USER REGISTER
+ */
+ app.use("/api/auth", userRegister);
+
+/**
+ * USER Login
+ */
+ app.use("/api/auth", userLogin);
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
