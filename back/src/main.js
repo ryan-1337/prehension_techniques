@@ -12,12 +12,15 @@ const port = 3000;
 let db = connectToDb();
 
 app.use(bodyParser.json());
+app.use(express.static(process.cwd()+"/front/wrestleFront/src/"));
 
 /**
  * Home page
  */
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.sendFile(
+    process.cwd() + "/front/wrestleFront/src/index.html"
+  );
 });
 
 /**
