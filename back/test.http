@@ -4,14 +4,14 @@ GET http://localhost:3000/api/techniques
 POST http://localhost:3000/api/techniques
 Content-Type: application/json
 
-{ "title": "Suplex", "difficulty": "hard" }
+{ "title": "Enfourchement", "difficulty": "hard" }
 
 ###
-DELETE http://localhost:3000/api/techniques/6289b2c2432c7a11087d2143
+DELETE http://localhost:3000/api/techniques/62b48338684ab51d908d4529
 
 ###
 
-PUT http://localhost:3000/api/techniques/6289adc6aaa33d2337be3e01
+PUT http://localhost:3000/api/techniques/62b4858d684ab51d908d452c
 Content-Type: application/json
 
 { "title": "Suplex", "difficulty": "hard" }
