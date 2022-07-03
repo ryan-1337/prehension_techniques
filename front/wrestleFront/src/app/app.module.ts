@@ -10,6 +10,7 @@ import { IndexComponent } from './components/index/index.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { RegisterComponent } from './components/register/register.component';
     NavbarComponent,
     HomeComponent,
     RegisterComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   providers: [],

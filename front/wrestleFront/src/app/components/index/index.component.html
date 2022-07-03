@@ -1,1 +1,24 @@
-<p>index works!</p>
+<div class="relative max-w-md mx-auto xl:max-w-2xl min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-xl mt-16">
+    <div class="card">
+        <div class="card-header mx-4 -mt-6">
+            <a href="https://www.material-tailwind.com" blur-shadow-image="true">
+                <img class="w-auto rounded-lg"
+                    src="https://www.fflutte.com/content/uploads/2020/02/m%C3%A9lo1.jpg"
+                    alt="tailwind-card-image" />
+            </a>
+        </div>
+        <div class="card-body" *ngFor="let techniques of technique">
+            <a >
+                <h4 class="font-semibold text-center font-sans text-lg text-indigo-900">{{ techniques.title }}</h4>
+            </a>
+            <br>
+            <p class="opcacity-60 mb-4 text-center font-semibold">
+               {{ techniques.difficulty }} 
+            </p>
+            <p class="opcacity-60 text-center">
+                {{ techniques.date | date: 'mediumDate' }}
+            </p>
+                
+        </div>
+    </div>
+</div>
