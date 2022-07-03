@@ -12,16 +12,18 @@ const port = 3000;
 let db = connectToDb();
 
 app.use(bodyParser.json());
-app.use(express.static(process.cwd()+"/front/wrestleFront/src/"));
+// app.use(express.static(process.cwd()+"/front/wrestleFront/src/"));
 
 /**
- * Home page
+ * Fix CORS Error
  */
-app.get("/", (req, res) => {
-  res.sendFile(
-    process.cwd() + "/front/wrestleFront/src/index.html"
-  );
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, DELETE, PATCH');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
 });
+
 
 /**
  * READ
